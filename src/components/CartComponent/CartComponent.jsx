@@ -1,14 +1,11 @@
 import React from 'react'
-import { Card } from 'antd';
 import {StyleNameProduct, WrapperCartStyle, WrapperPriceDiscountText, WrapperPriceText, WrapperReportText} from './style'
 import { StarFilled } from '@ant-design/icons'
 const CartComponent = () => {
-    const { Meta } = Card;
     return (
         <WrapperCartStyle
         hoverable
-        style={{ width: 240}}
-        bodySyle={{padding: '10px'}}
+        style={{ width: 240, padding: '10px'}}
         cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
       >
         <StyleNameProduct>dBánh Mì</StyleNameProduct>
