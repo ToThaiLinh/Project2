@@ -12,13 +12,13 @@ const HeaderComponent = () => {
     const onSearch = (value, _e, info) => console.log(info?.source, value);
 
     return (
-        <div>
+        <div style={{width: '100%', background: '#FFCC00', display: 'flex', justifyContent: 'center'}}>
             <WrapperHeader gutter={16}>
-            <Col span={6}>
+            <Col span={5}>
                 <WrapperTextHeader>DOUBLELINH</WrapperTextHeader>
             </Col>
                 
-            <Col span={12}>
+            <Col span={13}>
             <Search
                 placeholder="input search text"
                 allowClear

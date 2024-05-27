@@ -11,7 +11,7 @@ const HomePage = () => {
     const arr = ['Bánh ngọt', 'Đồ ăn nhanh', 'Đồ đông lạnh']
     return (
         <>
-            <div style={{padding: "0 120px"}}>
+            <div style={{width: '1270px', margin: '0 auto'}}>
                 <WrapperTypeProduct>
                     {arr.map( item => {
                         return (
@@ -21,7 +21,8 @@ const HomePage = () => {
                 </WrapperTypeProduct>
             </div>
 
-            <div id="container" style={{backgroundColor: '#efefef', padding: "0 120px", height: '1000px' , width: '100%'}}>
+            <div className='body' style= {{width: '100%', backgroundColor: '#efefef'}}>
+                <div id='container' style={{height: '1000px', width: '1270px', margin: '0 auto'}}>
                 <SliderComponent arrImage={[slider1, slider2, slider3]}/>
 
                 <WrapperProduct>
@@ -38,9 +39,11 @@ const HomePage = () => {
                 </WrapperProduct> 
                 <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
                 <WrapperButtonMore textButton="Xem thêm"  type='ouline' styleButton={{
-                    border: '1px solid #FFCC00', color: '#FFCC00', width: '240px', height:'38px', borderRadius: '4px' }}
+                    border: '1px solid #FFCC00', color: '#FFCC00',
+                     width: '240px', height:'38px', borderRadius: '4px' }}
                     styleTextButton={{fontWeight: 500}}
                 />
+                </div>
                 </div>
                 
             </div>  

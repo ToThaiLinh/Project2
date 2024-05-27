@@ -8,8 +8,9 @@ const TypeProductPage = () => {
     const onChange = () => {}
     return (
         <div style={{padding: '0 120px', background: '#efefef'}}>
+            <div style={{width: '1270px', margin: '0 auto'}}>
             <Row style={{ flexWrap: 'nowrap', paddingTop: '10px'}}>
-                <WrapperNavBarProduct>
+                <WrapperNavBarProduct span={4}>
                     <NavBarComponent/>
                 </WrapperNavBarProduct>
                 <Col  span={20}>
@@ -20,11 +21,12 @@ const TypeProductPage = () => {
                         <CardComponent/>
                         <CardComponent/>
                     </WrapperProduct>
-                    <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} style={{textAlign: 'center', marginTop: '10px'}} />
+                    <Pagination showQuickJumper defaultCurrent={2} total={100} onChange={onChange} style={{textAlign: 'center', marginTop: '10px'}} />
                 </Col>
             </Row>
             
         </div>
+    </div>
         
     )
 }

@@ -18,7 +18,7 @@ const CartComponent = () => {
             <span> | Đã bán 1000+</span>
         </WrapperReportText>
         <WrapperPriceText>
-            1.000.000$
+            <span style={{marginRight: '8px'}}>1.000.000$</span>
             <WrapperPriceDiscountText>
                 -5%
             </WrapperPriceDiscountText>
