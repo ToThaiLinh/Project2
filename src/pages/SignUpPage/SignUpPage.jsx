@@ -4,6 +4,10 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import { WrapperContainerLeft, WrapperTextLight } from './style'
 import {EyeFilled, EyeInvisibleFilled} from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
+import { useMutationHooks } from '../../hooks/useMutationHooks'
+import * as UserService from '../../services/UserService'
+import Loading from '../../components/LoadingComponent/LoadingComponent'
+
 const SignInPage = () => {
     const [isShowPassword, setIsShowPassword] = useState(false);
     const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false)
@@ -23,8 +27,18 @@ const SignInPage = () => {
         setConfirmPassword(value)
     } 
 
-    const handleSignUp = () => {
+    const mutation = useMutationHooks(
+        data => UserService.signUpUser(data)
+    )
 
+    const {data, isPending} = mutation
+
+    const handleSignUp = () => {
+        mutation.mutate({
+            email,
+            password,
+            confirmPassword
+        })
     }
 
     const navigate = useNavigate();
@@ -37,7 +51,7 @@ const SignInPage = () => {
                 <WrapperContainerLeft>
                 <h1>Xin chào</h1>
                 <p>Đăng nhập và tạo tài khoản</p>
-                <InputForm style={{marginBottom: '10px'}} placeholder="abc@gmail.com" value={email} handleOnChange={handleOnChangeEmail}/>
+                <InputForm style={{marginBottom: '10px'}} placeholder="abc@gmail.com" value={email} onChange={handleOnChangeEmail}/>
                 <div style={{position: 'relative'}}>
                     <span
                     onClick={() => setIsShowPassword(!isShowPassword)}
@@ -78,6 +92,8 @@ const SignInPage = () => {
                     </span>
                     <InputForm placeholder='Confirm Password' type={isShowConfirmPassword ? 'text' : 'password'} value={confirmPassword} onChange={handleOnChangeConfirmPassword}/>
                 </div>
+                {data?.status === 'ERR' && <span style={{color: 'red'}}>{data?.message}</span>}
+                <Loading isPending={isPending}></Loading>
                 <ButtonComponent
                     disabled={!email.length || !password || !confirmPassword}
                     onClick={handleSignUp}
