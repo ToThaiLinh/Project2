@@ -35,7 +35,7 @@ const HeaderComponent = () => {
     const content = (
         <div>
           <WrapperContentPopup onClick={handleLogout}>Đăng xuất</WrapperContentPopup>
-          <WrapperContentPopup>Thông tin người dùng</WrapperContentPopup>
+          <WrapperContentPopup onClick={() => navigate('/profile-user')}>Thông tin người dùng</WrapperContentPopup>
         </div>
       );
 
@@ -43,7 +43,7 @@ const HeaderComponent = () => {
         <div style={{width: '100%', background: '#FFCC00', display: 'flex', justifyContent: 'center'}}>
             <WrapperHeader gutter={16}>
             <Col span={5}>
-                <WrapperTextHeader>DOUBLELINH</WrapperTextHeader>
+                <WrapperTextHeader onClick={() => navigate('/')}>DOUBLELINH</WrapperTextHeader>
             </Col>
                 
             <Col span={13}>
