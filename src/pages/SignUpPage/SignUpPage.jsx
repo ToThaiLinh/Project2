@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputForm from '../../components/InputForm/InputForm'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import { WrapperContainerLeft, WrapperTextLight } from './style'
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useMutationHooks } from '../../hooks/useMutationHooks'
 import * as UserService from '../../services/UserService'
 import Loading from '../../components/LoadingComponent/LoadingComponent'
+import * as message from '../../components/Message/Message'
 
 const SignInPage = () => {
     const [isShowPassword, setIsShowPassword] = useState(false);
@@ -30,8 +31,18 @@ const SignInPage = () => {
     const mutation = useMutationHooks(
         data => UserService.signUpUser(data)
     )
-
-    const {data, isPending} = mutation
+    console.log(mutation)
+    const {data, isPending, isSuccess, isError} = mutation
+    
+    useEffect(() => {
+        if(isSuccess) {
+            message.success()
+            handleNavigateSignIn()
+        }
+        else if(isError) {
+            message.err()
+        }
+    },[isSuccess, isError])
 
     const handleSignUp = () => {
         mutation.mutate({
